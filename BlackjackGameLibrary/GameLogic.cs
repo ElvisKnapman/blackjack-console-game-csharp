@@ -84,6 +84,29 @@ namespace BlackjackGameLibrary
             return CalculateHandValue(player) <= 21;
         }
 
+        public static string DetermineWinner(PlayerModel player, PlayerModel dealer)
+        {
+            // check who wins between player and dealer hand values
+            int dealerHandValue = GameLogic.CalculateHandValue(dealer);
+            int playerHandValue = GameLogic.CalculateHandValue(player);
+
+            string output;
+
+            if (dealerHandValue > playerHandValue)
+            {
+                output = "Dealer has won the game.";
+            }
+            else if (playerHandValue > dealerHandValue)
+            {
+                output = $"{player.PlayerName} has won the game.";
+            }
+            else
+            {
+                output = $"Dealer and {player.PlayerName} tied. The result is a push.";
+            }
+
+            return output;
+        }
 
     }
 }
